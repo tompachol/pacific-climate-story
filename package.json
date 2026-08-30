@@ -1,0 +1,24 @@
+{
+  "name": "pacific-climate-story",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^7.0.1",
+    "@sveltejs/kit": "^2.70.2",
+    "@sveltejs/vite-plugin-svelte": "^6.2.4",
+    "svelte": "^5.38.10",
+    "vite": "^6.3.0"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "d3-dsv": "^3.0.1",
+    "d3-geo": "^3.1.1",
+    "leaflet": "^1.9.4"
+  }
+}
