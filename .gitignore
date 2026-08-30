@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# SvelteKit / Vite build files
+.svelte-kit/
+build/
+dist/
+
+# Vercel
+.vercel/
+
+# Environment variables — do not publish secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+build-error.txt
+
+# System / editor files
+.DS_Store
+Thumbs.db
+.vscode/
