@@ -27,7 +27,6 @@ The story highlights how climate change is already affecting Pacific communities
 The project uses data from:
 
 * Pacific Data Hub
-* United Nations Sustainable Development Goals Indicators
 * Pacific Dataviz Challenge datasets
 
 ## Competition
