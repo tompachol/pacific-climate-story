@@ -44,10 +44,8 @@
       }
 
       const text = await response.text();
-
       const firstLine = text.split(/\r?\n/)[0];
       const delimiter = firstLine.includes(';') ? ';' : ',';
-
       const rows = dsvFormat(delimiter).parse(text);
 
       if (!rows.length) {
@@ -105,9 +103,9 @@
       latestYear = Math.max(...cleanRows.map((row) => row.year));
 
       /*
-        Dla każdego kraju wybieramy jego ostatnią dostępną obserwację.
-        Dzięki temu kraj nie znika tylko dlatego, że nie ma wartości dokładnie
-        w najnowszym wspólnym roku.
+        For each country, select its latest available observation.
+        This prevents a country from disappearing when it has no value
+        in the latest year shared by the whole dataset.
       */
       const latestByCountry = new Map();
 
@@ -162,9 +160,9 @@
       .replace(/\s/g, '');
 
     /*
-      Obsługa:
-      50,06  -> 50.06
-      50.06  -> 50.06
+      The source stores values directly as percentages on a 0–100 scale:
+      50,06 -> 50.06%
+      0,69  -> 0.69%
       1.234,56 -> 1234.56
     */
     if (normalized.includes(',') && normalized.includes('.')) {
@@ -177,11 +175,7 @@
 
     const number = Number(normalized);
 
-    if (!Number.isFinite(number)) {
-      return null;
-    }
-
-    return number <= 1 ? number * 100 : number;
+    return Number.isFinite(number) ? number : null;
   }
 
   function y(index) {
@@ -199,6 +193,7 @@
   function displayName(country) {
     const names = {
       'Micronesia, Federated States of': 'Micronesia',
+      'Micronesia (Federated States of)': 'Micronesia',
       'Federated States of Micronesia': 'Micronesia',
       'Marshall Islands': 'Marshall Is.',
       'Solomon Islands': 'Solomon Is.',
@@ -447,7 +442,19 @@
 
   .bar {
     fill: #70bdd3;
-    transition: width 300ms ease;
+    cursor: default;
+    transform-box: fill-box;
+    transform-origin: left center;
+    transition:
+      opacity 160ms ease,
+      filter 160ms ease,
+      transform 160ms ease;
+  }
+
+  .bar:hover {
+    opacity: 0.88;
+    filter: brightness(1.08);
+    transform: scaleY(1.12);
   }
 
   .bar-primary {
