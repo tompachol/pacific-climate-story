@@ -2,8 +2,6 @@
 
 **An interactive data-visualisation project exploring climate vulnerability and resilience across Pacific Island countries and territories.**
 
-On the Edge of Disappearing
-
 🔗 **Live project:** https://pacific-climate-story-xhobatzdh-tompach.vercel.app/
 
 ## About
